@@ -23,7 +23,7 @@ app.use(cors())
 app.use(express.static("website"))
 
 // Setup Server
-const portNumber = 8000
+const portNumber = 5500
 function listening() {
   console.log("Server is live")
   console.log(`Listening on localhost port ${portNumber}`)

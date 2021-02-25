@@ -1,11 +1,14 @@
 /* Global Variables */
 
 // Create a new date instance dynamically with JS
-let d = new Date()
-let newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear()
-
+const today = new Date()
+const dd = String(today.getDate()).padStart(2, "0")
+const mm = String(today.getMonth() + 1).padStart(2, "0") //January is 0!
+const yyyy = today.getFullYear()
+const newDate = dd + "-" + mm + "-" + yyyy
+console.log(newDate)
 //example api call: api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={API key}
-const apiKey = "&appid=ed3e2d253edbd6715e20c0167ef4dc97"
+const apiKey = "&appid=ed3e2d253edbd6715e20c0167ef4dc97&units=imperial"
 const baseURL = "http://api.openweathermap.org/data/2.5/weather?zip="
 const country = "us"
 
@@ -63,8 +66,9 @@ async function updateUI() {
     document.getElementById("date").innerHTML = "Date: " + newDate
     document.getElementById("temp").innerHTML =
       "Temperature : " + allData.main.temp
-    document.getElementById("content").innerHTML =
-      allData.weather[0].description
+    document.getElementById("content").innerHTML = document.getElementById(
+      "feelings"
+    ).value
   } catch (error) {
     console.log("Error updating the UI: ", error)
   }
